@@ -1,207 +1,112 @@
-# Git Indexer CLI
+# 🚀 Git Indexer — GitHub Profile & Repository Explorer
 
-A beautiful command-line tool to explore GitHub profiles, repositories, and files with syntax highlighting and interactive menus.
-
-## Features
-
-✨ **Beautiful Terminal UI**
-- Colored output with ASCII art headers
-- Interactive menus with keyboard navigation
-- Real-time loading indicators
-- Formatted tables and file listings
-
-🚀 **Core Functionality**
-- Search GitHub profiles by username
-- View user profile information (followers, repos, bio)
-- Browse all public repositories
-- Navigate repository file structures
-- View code files with syntax highlighting
-- Support for multiple programming languages
-
-📋 **File Browser**
-- Navigate directories recursively
-- Display file sizes and types
-- File type icons for easy identification
-- Breadcrumb navigation
-
-🎨 **Code Viewer**
-- Syntax highlighting for 20+ languages
-- Line numbers
-- Copy code to clipboard (planned)
-- Support for images and documents
-
-## Installation
-
-```bash
-# Clone or navigate to the project
-cd git-indexer
-
-# Install dependencies
-npm install
-
-# Run the CLI
-npm start
-# or
-npx git-indexer-cli
-```
-
-## Usage
-
-1. **Start the application:**
-   ```bash
-   npm start
-   ```
-
-2. **Enter a GitHub username** when prompted
-
-3. **Select an action:**
-   - View Profile: See user's profile information
-   - Browse Repositories: Explore user's repositories
-   - Search Another User: Search for a different GitHub user
-   - Exit: Quit the application
-
-4. **Navigate repositories:**
-   - Use arrow keys to select repositories
-   - Press Enter to open a repository
-   - Browse files and directories
-   - Select files to view their contents
-
-5. **View code:**
-   - Code will be displayed with syntax highlighting
-   - Use arrow keys to navigate back
-   - Return to main menu to search another user
-
-## Environment Variables
-
-### GitHub Token (Optional)
-
-To increase API rate limits, set your GitHub personal access token:
-
-```bash
-# On macOS/Linux
-export GITHUB_TOKEN=your_token_here
-
-# On Windows PowerShell
-$env:GITHUB_TOKEN="your_token_here"
-
-# On Windows Command Prompt
-set GITHUB_TOKEN=your_token_here
-```
-
-[Create a token](https://github.com/settings/tokens) with `public_repo` scope.
-
-## API Rate Limits
-
-- **Without token:** 60 requests/hour
-- **With token:** 5,000 requests/hour
-
-## Supported File Types
-
-### Code Files
-- JavaScript/TypeScript (.js, .ts, .jsx, .tsx)
-- Python (.py)
-- Java (.java)
-- C/C++ (.c, .cpp, .h, .hpp)
-- C# (.cs)
-- Go (.go)
-- Ruby (.rb)
-- PHP (.php)
-- Swift (.swift)
-- Kotlin (.kt)
-- Rust (.rs)
-- Bash (.sh)
-- And more...
-
-### Documents
-- Markdown (.md)
-- JSON (.json)
-- YAML (.yml, .yaml)
-- XML (.xml)
-- SQL (.sql)
-- HTML (.html)
-- CSS (.css, .scss, .less)
-
-### Media
-- Images (.png, .jpg, .jpeg, .gif, .svg, .bmp)
-- PDFs and Office documents
-
-## Terminal Requirements
-
-- **Node.js:** 16.0.0 or higher
-- **Terminal width:** Minimum 80 characters (100+ recommended for best experience)
-- **Color support:** 256-color terminal recommended
-
-## Keyboard Shortcuts
-
-- **Arrow Keys:** Navigate menus
-- **Enter:** Select item
-- **Escape (in some contexts):** Go back
-
-## Error Handling
-
-- User not found: Clear error message and prompt to retry
-- Network errors: Automatic fallback with error description
-- API rate limit: Helpful message with rate limit info
-- Empty directories: Option to return to parent or main menu
-
-## Examples
-
-```bash
-# Search for a popular developer
-npm start
-# Enter: torvalds
-
-# Browse Linux kernel repository
-# Select: linux (if available)
-# Navigate through the repository structure
-```
-
-## Performance
-
-- Lazy loading of file content
-- Efficient pagination for large repositories
-- Cached user data during session
-- Smart file type detection
-
-## Troubleshooting
-
-### Connection Errors
-```bash
-# Check your internet connection
-# The tool uses GitHub's public API (v3)
-```
-
-### Rate Limit Exceeded
-```bash
-# Set a GitHub token to increase rate limits
-export GITHUB_TOKEN=your_token_here
-npm start
-```
-
-### Character Encoding Issues
-```bash
-# Ensure your terminal supports UTF-8
-# Use Windows Terminal on Windows for best compatibility
-```
-
-## Contributing
-
-Feel free to contribute by opening issues and pull requests!
-
-## License
-
-MIT
-
-## Credits
-
-Built with:
-- [Chalk](https://github.com/chalk/chalk) - Terminal colors
-- [Inquirer.js](https://github.com/SBoudrias/Inquirer.js) - Interactive CLI
-- [Axios](https://github.com/axios/axios) - HTTP client
-- [Table](https://github.com/gajus/table) - ASCII tables
-- [Figlet](https://github.com/patorjk/figlet.js) - ASCII art
-- [Highlight.js](https://github.com/highlightjs/highlight.js) - Code syntax highlighting
+A feature-rich developer tool featuring both an interactive **Web Application** and a **Command-Line Interface (CLI)** to search, explore, and index GitHub profiles, repositories, directory structures, and code files with real-time filtering, theme toggling, and syntax highlighting.
 
 ---
 
-Made with ❤️ for GitHub explorers
+## 🌟 Key Interfaces
+
+### 🌐 1. Web Application (`index.html`)
+- **Centered Profile Card**: Displays user avatar, handle, bio, repository stats, follower/following counts, with avatar preview modal & image download support.
+- **Repository Search & Filter Box**: Real-time live search filtering by repository **name** and **description** with dynamic result counters.
+- **Interactive File Explorer**: Full directory navigation with breadcrumbs and file-type icons.
+- **Code Viewer Modal**: Code preview with syntax highlighting, line numbers, and one-click **Copy to Clipboard**.
+- **Dark / Light Mode**: Dynamic theme switcher with automatic system theme detection.
+
+### 💻 2. Command-Line Interface (CLI)
+- **Interactive Terminal Menus**: Powered by `inquirer` with keyboard navigation.
+- **Formatted ASCII Tables**: Styled profile cards and repository tables via `table` and `chalk`.
+- **Code Highlighting**: In-terminal syntax highlighting for 20+ programming languages.
+- **Zero Configuration**: Option to use optional `GITHUB_TOKEN` for increased API rate limits.
+
+---
+
+## 📁 Quick Start & Installation
+
+### Option A: Web Application
+Simply open `index.html` in any modern web browser or serve locally:
+```bash
+# Serve locally with npx (optional)
+npx serve .
+```
+
+### Option B: Quick Setup Scripts
+- **Windows**: Double-click `setup.bat` or run:
+  ```cmd
+  setup.bat
+  ```
+- **macOS / Linux**: Run in terminal:
+  ```bash
+  chmod +x setup.sh
+  ./setup.sh
+  ```
+
+### Option C: Manual CLI Setup
+```bash
+# 1. Install dependencies
+npm install
+
+# 2. Run test suite to verify setup
+node test.js
+
+# 3. Start the CLI application
+npm start
+```
+
+---
+
+## 🛠️ Detailed Features
+
+### 🔍 Repository Live Search & Filter (Web UI)
+Filter repositories instantaneously by:
+- **Repository Name** (e.g., `react`, `cli`)
+- **Repository Description** (e.g., `frontend`, `compiler`, `utility`)
+- Live counter displays matching repository count (e.g., `Showing 5 of 30 repositories`).
+
+### 👤 Centered Profile Card
+- Clean visual hierarchy with centered profile picture, username (`@handle`), bio, and follower metrics.
+- Clickable profile picture opens a full-screen preview with **Download Image** functionality.
+
+### 📂 Directory & File Browser
+- Recursively navigate repository folders with breadcrumb trail navigation (`repo/src/ui/...`).
+- File icons categorized by extension (JavaScript, Python, Rust, Go, Markdown, JSON, images, PDFs, etc.).
+- Modal code viewer with syntax highlighting and instant **Copy Code** button.
+
+---
+
+## 🔑 Environment Variables (Increasing Rate Limits)
+
+GitHub's public API allows **60 requests/hour** unauthenticated. To increase the limit to **5,000 requests/hour**, set your personal access token:
+
+```bash
+# macOS / Linux
+export GITHUB_TOKEN="your_personal_access_token"
+
+# Windows PowerShell
+$env:GITHUB_TOKEN="your_personal_access_token"
+
+# Windows Command Prompt
+set GITHUB_TOKEN="your_personal_access_token"
+```
+
+---
+
+## 🎨 Supported File Types & Languages
+
+- **Languages**: JavaScript (`.js`, `.jsx`), TypeScript (`.ts`, `.tsx`), Python (`.py`), Java (`.java`), C/C++ (`.c`, `.cpp`, `.h`), C# (`.cs`), Go (`.go`), Ruby (`.rb`), PHP (`.php`), Swift (`.swift`), Kotlin (`.kt`), Rust (`.rs`), Shell (`.sh`, `.bash`), HTML (`.html`), CSS (`.css`, `.scss`, `.less`), SQL (`.sql`), JSON (`.json`), YAML (`.yml`, `.yaml`), XML (`.xml`), Markdown (`.md`).
+- **Media & Documents**: Images (`.png`, `.jpg`, `.jpeg`, `.gif`, `.svg`), PDFs, and office files.
+
+---
+
+## 🧪 Testing
+
+The repository includes an automated module test runner:
+```bash
+node test.js
+```
+
+---
+
+## 📄 License
+
+Distributed under the **MIT License**.
